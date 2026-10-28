@@ -6,6 +6,7 @@
 <title>Projects | Blake Gisclair</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Public+Sans:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="demos.css">
 <!-- Projects page: research projects from the NETS Lab, NASA and undergraduate research. Shared styles in style.css. -->
 </head>
 <body>
@@ -85,6 +86,47 @@
       <h2>Entropy-based ensembling</h2>
       <p class="meta">NETS Lab &middot; for the US Army Engineer Research and Development Center (ERDC)</p>
       <p>Developing ensembling techniques that weight model predictions using entropy, so more confident models count for more in the combined output.</p>
+      <section class="demo" id="ensemble" aria-labelledby="ensemble-title">
+        <div class="demo-head">
+          <span class="eyebrow">Interactive</span>
+          <h3 id="ensemble-title">Majority vote vs. weighting by certainty</h3>
+          <p>Three models classify the same input. A majority vote counts every model equally; entropy weighting lets a confident model count for more than an unsure one.</p>
+        </div>
+        <div class="presets"><span>Try:</span>
+          <button type="button" data-preset="minority">Confident minority</button>
+          <button type="button" data-preset="split">Three-way split</button>
+          <button type="button" data-preset="agree">All agree</button>
+        </div>
+        <div class="models">
+          <div class="model">
+            <label for="ens-c0">Model 1</label>
+            <select id="ens-c0" aria-label="Model 1 prediction"><option value="0" selected>Class A</option><option value="1">Class B</option><option value="2">Class C</option></select>
+            <div class="conf"><label for="ens-p0" class="note">Confidence <output></output></label><input type="range" id="ens-p0" min="34" max="99" value="95"></div>
+            <div class="probs"></div>
+            <div class="meta-line"></div>
+          </div>
+          <div class="model">
+            <label for="ens-c1">Model 2</label>
+            <select id="ens-c1" aria-label="Model 2 prediction"><option value="0">Class A</option><option value="1" selected>Class B</option><option value="2">Class C</option></select>
+            <div class="conf"><label for="ens-p1" class="note">Confidence <output></output></label><input type="range" id="ens-p1" min="34" max="99" value="40"></div>
+            <div class="probs"></div>
+            <div class="meta-line"></div>
+          </div>
+          <div class="model">
+            <label for="ens-c2">Model 3</label>
+            <select id="ens-c2" aria-label="Model 3 prediction"><option value="0">Class A</option><option value="1" selected>Class B</option><option value="2">Class C</option></select>
+            <div class="conf"><label for="ens-p2" class="note">Confidence <output></output></label><input type="range" id="ens-p2" min="34" max="99" value="40"></div>
+            <div class="probs"></div>
+            <div class="meta-line"></div>
+          </div>
+        </div>
+        <div class="verdicts" aria-live="polite">
+          <div class="verdict" id="ens-majority"><h4>Majority vote</h4><div class="winner"></div><p class="why"></p></div>
+          <div class="verdict" id="ens-weighted"><h4>Entropy-weighted</h4><div class="winner"></div><div class="probs"></div></div>
+        </div>
+        <p class="ens-summary result"></p>
+        <p class="note">Weight = 1 &minus; H/log 3, where H is the entropy of a model's prediction. A generic illustration of the idea, not the method built for ERDC.</p>
+      </section>
       <ul class="tags"><li>Ensemble methods</li><li>Information theory</li></ul>
     </article>
 
@@ -101,6 +143,39 @@
       <p class="meta">Undergraduate research &middot; advised by Dr. Ryan T. White &middot; April 2026</p>
       <p>When a network takes random losses, how likely is it that the cumulative damage crosses a critical limit, and in what order do components fail? Using renewal-reward processes and transform methods, I derived closed-form probabilities for the order in which thresholds are crossed, linking local random failures to global network risk.</p>
       <div class="links"><a href="stochastic-network-resilience.pdf">Poster</a><a href="https://repository.fit.edu/math_student/11/">Repository page</a></div>
+      <section class="demo" id="netsim" aria-labelledby="netsim-title">
+        <div class="demo-head">
+          <span class="eyebrow">Interactive</span>
+          <h3 id="netsim-title">Watch thresholds get crossed</h3>
+          <p>Each attack knocks out a random number of nodes; each failed node takes down a random number of edges, and each edge carries a random loss. Which limit breaks first: nodes, edges or total weight?</p>
+        </div>
+        <div class="controls">
+          <div class="control"><label for="ns-p1"><span>Node parameter p&#8321;</span><output id="ns-p1-out"></output></label><input type="range" id="ns-p1" min="0.1" max="0.9" step="0.05" value="0.5"></div>
+          <div class="control"><label for="ns-p2"><span>Edge parameter p&#8322;</span><output id="ns-p2-out"></output></label><input type="range" id="ns-p2" min="0.1" max="0.9" step="0.05" value="0.5"></div>
+          <div class="control"><label for="ns-r"><span>Loss rate r</span><output id="ns-r-out"></output></label><input type="range" id="ns-r" min="0.25" max="2.5" step="0.25" value="1"></div>
+          <div class="control"><label for="ns-M1"><span>Node threshold M&#8321;</span><output id="ns-M1-out"></output></label><input type="range" id="ns-M1" min="1" max="5" step="1" value="1"></div>
+          <div class="control"><label for="ns-M2"><span>Edge threshold M&#8322;</span><output id="ns-M2-out"></output></label><input type="range" id="ns-M2" min="2" max="10" step="1" value="2"></div>
+          <div class="control"><label for="ns-M3"><span>Weight threshold M&#8323;</span><output id="ns-M3-out"></output></label><input type="range" id="ns-M3" min="1" max="40" step="1" value="10"></div>
+        </div>
+        <div class="meters" aria-live="polite">
+          <div class="meter"><span class="name"></span><span class="track"><span class="fill"></span><span class="mark" title="Threshold"></span></span><span class="val"></span></div>
+          <div class="meter"><span class="name"></span><span class="track"><span class="fill"></span><span class="mark" title="Threshold"></span></span><span class="val"></span></div>
+          <div class="meter"><span class="name"></span><span class="track"><span class="fill"></span><span class="mark" title="Threshold"></span></span><span class="val"></span></div>
+        </div>
+        <p class="result" aria-live="polite"></p>
+        <div class="demo-actions">
+          <button type="button" class="primary" id="ns-run">Run one attack sequence</button>
+          <button type="button" id="ns-sim">Simulate the curve</button>
+        </div>
+        <div class="legend"><span><i></i>Closed form (Theorem 2)</span><span><i class="dot"></i>Simulation, 4,000 runs per point, 95% interval</span></div>
+        <div class="chart-wrap">
+          <svg class="chart" viewBox="0 0 640 260" role="img" aria-label="Probability that thresholds are crossed in order nodes, edges, weight, against the weight threshold"></svg>
+          <div class="tip" hidden></div>
+        </div>
+        <p class="sim-summary" aria-live="polite"></p>
+        <p class="note formula-note" hidden>The closed form is drawn only for M&#8321; = 1, M&#8322; = 2, the poster's example setting, where it has been checked against simulation. Other settings show the simulation alone.</p>
+        <p class="note">The chart shows P(&#957;&#8321; &lt; &#957;&#8322; &lt; &#957;&#8323;): the chance the node limit breaks first, then the edge limit, then the weight limit.</p>
+      </section>
       <ul class="tags"><li>Probability</li><li>Stochastic processes</li></ul>
     </article>
   </div>
@@ -112,5 +187,7 @@
     <a href="index.html">Home</a>
   </div>
 </footer>
+<script src="js/network-sim.js" defer></script>
+<script src="js/ensemble-demo.js" defer></script>
 </body>
 </html>
