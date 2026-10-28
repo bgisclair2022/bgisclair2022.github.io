@@ -111,7 +111,8 @@ def main():
     rgb.crop((a.x0, a.y0, a.x0 + a.crop, a.y0 + a.crop)).resize((size, size), Image.LANCZOS).save(out / "rgb.png", optimize=True)
     m = mask[ys, xs][:: a.bin, :: a.bin][:size, :size]
     overlay = np.zeros((size, size, 4), np.uint8)
-    overlay[m == 1] = (235, 104, 52, 255)
+    overlay[m == 1] = (235, 104, 52, 255)   # tumour cells: orange
+    overlay[m == 2] = (42, 120, 214, 255)   # other cells: blue
     Image.fromarray(overlay).save(out / "mask.png", optimize=True)
 
     meta = {
