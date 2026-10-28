@@ -47,6 +47,36 @@
         <li>Measured noise in the fluorescence-based training labels and developed a short calibration step that adapts a model to a new scan day.</li>
       </ul>
       <ul class="tags"><li>PyTorch</li><li>Computer vision</li><li>Transformers</li><li>HPC</li></ul>
+      <section class="demo loading" id="hsi" aria-labelledby="hsi-title">
+        <div class="demo-head">
+          <span class="eyebrow">Interactive</span>
+          <h3 id="hsi-title">Explore a hyperspectral image</h3>
+          <p>A public hyperspectral microscope image of lung cancer tissue, with 61 wavelengths from 450 to 750 nm. Slide through the wavelengths, point at any pixel to see its spectrum, and compare tumour cells with other cells.</p>
+        </div>
+        <div class="hsi-body">
+          <div class="hsi-image">
+            <canvas id="hsi-view" width="192" height="192" aria-label="Hyperspectral image; point at a pixel to plot its spectrum"></canvas>
+            <div class="hsi-toggles">
+              <label><input type="radio" name="hsi-mode" value="band" checked> One wavelength</label>
+              <label><input type="radio" name="hsi-mode" value="rgb"> Colour photo</label>
+              <label><input type="checkbox" id="hsi-mask"> Show tumour cells</label>
+            </div>
+          </div>
+          <div class="hsi-side">
+            <div class="control"><label for="hsi-band"><span>Wavelength</span><output id="hsi-band-out"></output></label><input type="range" id="hsi-band" min="0" max="60" step="1" value="20"></div>
+            <div class="hsi-toggles" role="radiogroup" aria-label="Chart">
+              <label><input type="radio" name="hsi-chart" value="spectra" checked> Spectra</label>
+              <label><input type="radio" name="hsi-chart" value="diff"> Difference</label>
+            </div>
+            <div class="legend"><span><i class="tumour"></i>Tumour cells (average)</span><span><i class="other"></i>Other cells (average)</span><span><i class="pixel"></i>Pixel you point at</span></div>
+            <div class="legend diff-legend" hidden><span><i class="tumour"></i>Tumour minus other cells (average reflectance)</span></div>
+            <svg class="chart" viewBox="0 0 640 240" role="img" aria-label="Reflectance spectra of tumour cells, other cells, and the selected pixel"></svg>
+            <p class="hsi-readout" aria-live="polite">Loading the image&hellip;</p>
+          </div>
+        </div>
+        <p class="note">The average spectra differ by only about 1% in reflectance, which is why telling these cells apart takes a trained model rather than a single wavelength.</p>
+        <p class="note">Data: one region of HMI-LUSC (patient 10, region 1), H&amp;E-stained tissue imaged at 10&times;. Yan et al., &ldquo;HMI-LUSC: A Histological Hyperspectral Imaging Dataset for Lung Squamous Cell Carcinoma,&rdquo; <em>Scientific Data</em> 13:415 (2026), <a href="https://doi.org/10.6084/m9.figshare.30188080.v1">dataset</a>, CC BY 4.0. Cropped, binned 4&times; and calibrated to reflectance. Not data from my lab.</p>
+      </section>
     </article>
 
     <article class="entry" id="satellites">
@@ -189,5 +219,6 @@
 </footer>
 <script src="js/network-sim.js" defer></script>
 <script src="js/ensemble-demo.js" defer></script>
+<script src="js/hsi-explorer.js" defer></script>
 </body>
 </html>
