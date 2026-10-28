@@ -120,6 +120,10 @@ table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
 th, td { text-align: left; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
 th { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 td.code { white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--muted); }
+th.grade, td.grade { text-align: center; padding-right: 0; width: 4.5em; }
+.gpa { display: flex; flex-wrap: wrap; gap: 12px 40px; margin: 6px 0 0; }
+.gpa dt { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.gpa dd { margin: 0; font-family: var(--display); font-size: 34px; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
 /* Personal page */
 .prose { display: flex; flex-direction: column; gap: 16px; max-width: 65ch; }
