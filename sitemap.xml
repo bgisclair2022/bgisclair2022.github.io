@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every page of the site, for search engines. Update lastmod when a page changes. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bgisclair2022.github.io/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://bgisclair2022.github.io/projects.html</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://bgisclair2022.github.io/publications.html</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://bgisclair2022.github.io/classes.html</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://bgisclair2022.github.io/personal.html</loc><lastmod>2026-10-28</lastmod></url>
+</urlset>
