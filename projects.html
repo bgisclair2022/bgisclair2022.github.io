@@ -30,6 +30,7 @@
 
   <div class="stack">
     <article class="entry">
+      <figure class="shot contain"><div class="frame"><img src="img/hyperspectral-cube.svg" alt="Schematic of a hyperspectral image cube" loading="lazy"></div><figcaption>A hyperspectral image stacks hundreds of wavelength bands, so every pixel carries a full spectrum. Schematic, not lab data.</figcaption></figure>
       <h2>Label-free cancer cell detection from hyperspectral images</h2>
       <p class="meta">NETS Lab &middot; NSF-funded</p>
       <p>Hyperspectral microscopes record hundreds of wavelengths per pixel instead of three colours. This project uses that extra information to tell cancer cells from healthy cells without staining. I built the pipeline from raw scans to per-pixel predictions.</p>
@@ -48,7 +49,8 @@
       <ul class="tags"><li>PyTorch</li><li>Computer vision</li><li>Transformers</li><li>HPC</li></ul>
     </article>
 
-    <article class="entry">
+    <article class="entry" id="satellites">
+      <figure class="shot cover"><div class="frame"><img src="img/halo-detection.jpg" alt="Vision Transformer detections of antenna, body and thrusters on a simulated satellite" loading="lazy"></div><figcaption>HALO: a Vision Transformer labelling satellite components (antenna, body, thrusters) with confidence scores.</figcaption></figure>
       <h2>Machine learning on low-SWaP satellites</h2>
       <p class="meta">NETS Lab &middot; advised by Dr. Ryan T. White</p>
       <p>Spacecraft have strict limits on size, weight and power (SWaP), which rule out standard object-detection networks. This work studies how to shrink models enough to run on board for tasks like spotting broken components, docking and tracking debris.</p>
@@ -81,7 +83,8 @@
       <ul class="tags"><li>Time series</li><li>TCNs</li><li>Telemetry</li></ul>
     </article>
 
-    <article class="entry">
+    <article class="entry" id="stochastic">
+      <figure class="shot contain"><div class="frame"><img src="img/network-failures.png" alt="A weighted network before and after random node failures" loading="lazy"></div><figcaption>A weighted network before and after random failures. The question is when cumulative losses cross a critical threshold.</figcaption></figure>
       <h2>Stochastic network resilience</h2>
       <p class="meta">Undergraduate research &middot; advised by Dr. Ryan T. White &middot; April 2026</p>
       <p>When a network takes random losses, how likely is it that the cumulative damage crosses a critical limit, and in what order do components fail? Using renewal-reward processes and transform methods, I derived closed-form probabilities for the order in which thresholds are crossed, linking local random failures to global network risk.</p>
