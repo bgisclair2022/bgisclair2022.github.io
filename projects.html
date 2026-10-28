@@ -49,16 +49,29 @@
     </article>
 
     <article class="entry" id="satellites">
-      <figure class="shot cover"><div class="frame"><img src="img/halo-detection.jpg" alt="Vision Transformer detections of antenna, body and thrusters on a simulated satellite" loading="lazy"></div><figcaption>HALO: a Vision Transformer labelling satellite components (antenna, body, thrusters) with confidence scores.</figcaption></figure>
-      <h2>Machine learning on low-SWaP satellites</h2>
-      <p class="meta">NETS Lab &middot; advised by Dr. Ryan T. White</p>
-      <p>Spacecraft have strict limits on size, weight and power (SWaP), which rule out standard object-detection networks. This work studies how to shrink models enough to run on board for tasks like spotting broken components, docking and tracking debris.</p>
+      <figure class="shot natural"><div class="frame"><img src="img/peek-variance.jpg" alt="A satellite input frame beside PEEK heatmaps for YOLOv5 module 1 (variance 193) and module 19 (variance 5,652)" loading="lazy"></div><figcaption>PEEK maps how much information each layer carries. Low-variance layers like module 1 are candidates for removal; high-variance layers like module 19 stay.</figcaption></figure>
+      <h2>PEEK-guided pruning for spacecraft</h2>
+      <p class="meta">NETS Lab with Technetium Engineering &middot; Small Satellite Conference poster, 2025</p>
+      <p>Spacecraft have strict limits on size, weight and power (SWaP), which rule out standard object-detection networks for rendezvous, proximity operations and docking. We used PEEK, an entropy-based explainability method, to find the YOLOv5 layers that carry the least information, removed them, and reconnected the network.</p>
       <ul>
-        <li>Used PEEK, an explainability method, to guide pruning of neural networks for low-SWaP hardware. Presented as a poster at the 2025 Small Satellite Conference.</li>
-        <li>HALO: quantized Vision Transformers to FP16 and INT8 with ONNX and NVIDIA TensorRT, ran them on a Jetson AGX Orin, and compared them against YOLOv5 CNNs for orbital object detection.</li>
+        <li>Cut model size by up to 30% and compute by 25%, with only minor accuracy loss, on both YOLOv5 nano and small.</li>
+        <li>Trained on satellite components: solar arrays, thrusters, antennas and bodies.</li>
       </ul>
-      <div class="links"><a href="https://sloanhatter.github.io/HALO-High-efficiency-Automated-Low-SWaP-Operations/">HALO project site</a><a href="halo.pdf">HALO poster</a><a href="publications.html">Related publications</a></div>
-      <ul class="tags"><li>Vision Transformers</li><li>Quantization</li><li>TensorRT</li><li>Model pruning</li><li>Edge deployment</li></ul>
+      <div class="links"><a href="https://digitalcommons.usu.edu/smallsat/2025/all2025/146/">Conference page</a><a href="publications.html">Related publications</a></div>
+      <ul class="tags"><li>YOLOv5</li><li>Model pruning</li><li>Explainability</li><li>Edge deployment</li></ul>
+    </article>
+
+    <article class="entry" id="halo">
+      <figure class="shot cover"><div class="frame"><img src="img/halo-detection.jpg" alt="Vision Transformer detections of antenna, body and thrusters on a simulated satellite" loading="lazy"></div><figcaption>HALO: a Vision Transformer labelling satellite components (antenna, body, thrusters) with confidence scores.</figcaption></figure>
+      <h2>HALO: Vision Transformers on low-SWaP hardware</h2>
+      <p class="meta">With Sloan Hatter &middot; advised by Dr. Ryan T. White &middot; April 2026</p>
+      <p>Vision Transformers capture more global context than CNNs, but they are too heavy for satellite hardware as-is. HALO shrinks them through quantization so they can run on board for spotting broken components, docking and tracking debris.</p>
+      <ul>
+        <li>Quantized Vision Transformers to FP16 and INT8 with ONNX and NVIDIA TensorRT and ran them on a Jetson AGX Orin.</li>
+        <li>Compared them against YOLOv5 CNNs for orbital object detection.</li>
+      </ul>
+      <div class="links"><a href="https://sloanhatter.github.io/HALO-High-efficiency-Automated-Low-SWaP-Operations/">Project site</a><a href="halo.pdf">Poster</a></div>
+      <ul class="tags"><li>Vision Transformers</li><li>Quantization</li><li>TensorRT</li><li>Jetson</li></ul>
     </article>
 
     <article class="entry">
