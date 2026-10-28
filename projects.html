@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projects | Blake Gisclair</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500&family=Public+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<!-- Projects page: research projects from the NETS Lab, NASA and undergraduate research. Shared styles in style.css. -->
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site">
+  <div class="container">
+    <a class="name" href="index.html">Blake Gisclair</a>
+    <ul>
+      <li><a href="projects.html" aria-current="page">Projects</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="personal.html">Personal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+  <header class="page-head">
+    <h1>Projects</h1>
+    <p class="lede">Research from the Neural Transmissions (NETS) Lab at Florida Tech, NASA Goddard, and my undergraduate research.</p>
+  </header>
+
+  <div class="stack">
+    <article class="entry">
+      <h2>Label-free cancer cell detection from hyperspectral images</h2>
+      <p class="meta">NETS Lab &middot; NSF-funded</p>
+      <p>Hyperspectral microscopes record hundreds of wavelengths per pixel instead of three colours. This project uses that extra information to tell cancer cells from healthy cells without staining. I built the pipeline from raw scans to per-pixel predictions.</p>
+      <div class="flow" aria-label="Pipeline">
+        <span class="step">Raw scan</span><span class="arrow">&rarr;</span>
+        <span class="step">Calibration</span><span class="arrow">&rarr;</span>
+        <span class="step">U-Net segmentation</span><span class="arrow">&rarr;</span>
+        <span class="step">Spectral transformer ensemble</span><span class="arrow">&rarr;</span>
+        <span class="step">Spatial smoothing</span>
+      </div>
+      <ul>
+        <li>Built a config-driven framework that scores every pipeline variant against the same fixed data split, so hundreds of cluster runs compare fairly.</li>
+        <li>Showed that models trained on one scan day lose most of their accuracy on another, and changed the evaluation to hold out whole days.</li>
+        <li>Measured noise in the fluorescence-based training labels and developed a short calibration step that adapts a model to a new scan day.</li>
+      </ul>
+      <ul class="tags"><li>PyTorch</li><li>Computer vision</li><li>Transformers</li><li>HPC</li></ul>
+    </article>
+
+    <article class="entry">
+      <h2>Machine learning on low-SWaP satellites</h2>
+      <p class="meta">NETS Lab &middot; advised by Dr. Ryan T. White</p>
+      <p>Spacecraft have strict limits on size, weight and power (SWaP), which rule out standard object-detection networks. This work studies how to shrink models enough to run on board for tasks like spotting broken components, docking and tracking debris.</p>
+      <ul>
+        <li>Used PEEK, an explainability method, to guide pruning of neural networks for low-SWaP hardware. Presented at the 2025 Small Satellite Conference.</li>
+        <li>HALO: quantized Vision Transformers to FP16 and INT8 with ONNX and NVIDIA TensorRT, ran them on a Jetson AGX Orin, and compared them against YOLOv5 CNNs for orbital object detection.</li>
+      </ul>
+      <div class="links"><a href="https://sloanhatter.github.io/HALO-High-efficiency-Automated-Low-SWaP-Operations/">HALO project site</a><a href="halo.pdf">HALO poster</a><a href="publications.html">Related publications</a></div>
+      <ul class="tags"><li>Vision Transformers</li><li>Quantization</li><li>TensorRT</li><li>Model pruning</li><li>Edge deployment</li></ul>
+    </article>
+
+    <article class="entry">
+      <h2>Machine-learning detection of nuclear explosions</h2>
+      <p class="meta">NETS Lab &middot; for the Air Force Technical Applications Center (AFTAC)</p>
+      <p>Developing machine-learning algorithms that process geophysical signals and flag anomalous events, toward automatic detection of nuclear explosions.</p>
+      <ul class="tags"><li>Signal processing</li><li>Anomaly detection</li><li>Classification</li></ul>
+    </article>
+
+    <article class="entry">
+      <h2>Entropy-based ensembling</h2>
+      <p class="meta">NETS Lab &middot; for the US Army Engineer Research and Development Center (ERDC)</p>
+      <p>Developing ensembling techniques that weight model predictions using entropy, so more confident models count for more in the combined output.</p>
+      <ul class="tags"><li>Ensemble methods</li><li>Information theory</li></ul>
+    </article>
+
+    <article class="entry">
+      <h2>Anomaly detection in satellite telemetry</h2>
+      <p class="meta">NASA Goddard Space Flight Center &middot; Magnetospheric Multiscale (MMS) mission &middot; Summer 2025</p>
+      <p>Implemented Temporal Convolutional Networks (TCNs) to detect anomalous behaviour in MMS spacecraft telemetry, with the goal of predicting and preventing critical failures. Worked in the Ground System Software branch alongside the Heliophysics Science Division.</p>
+      <ul class="tags"><li>Time series</li><li>TCNs</li><li>Telemetry</li></ul>
+    </article>
+
+    <article class="entry">
+      <h2>Stochastic network resilience</h2>
+      <p class="meta">Undergraduate research &middot; advised by Dr. Ryan T. White &middot; April 2026</p>
+      <p>When a network takes random losses, how likely is it that the cumulative damage crosses a critical limit, and in what order do components fail? Using renewal-reward processes and transform methods, I derived closed-form probabilities for the order in which thresholds are crossed, linking local random failures to global network risk.</p>
+      <div class="links"><a href="stochastic-network-resilience.pdf">Poster</a><a href="https://repository.fit.edu/math_student/11/">Repository page</a></div>
+      <ul class="tags"><li>Probability</li><li>Stochastic processes</li></ul>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 Blake Gisclair</span>
+    <a href="index.html">Home</a>
+  </div>
+</footer>
+</body>
+</html>
