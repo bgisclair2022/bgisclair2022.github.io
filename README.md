@@ -6,6 +6,9 @@ Plain HTML/CSS site, ready for GitHub Pages (push this folder as the
 - `index.html` - home page (intro, photo, experience, section tiles)
 - `projects.html`, `publications.html`, `classes.html`, `personal.html` - one page per section
 - `style.css` - shared styles for every page
+- `demos.css`, `js/network-sim.js`, `js/ensemble-demo.js` - the two interactive demos on the Projects page
+  (threshold-crossing simulator; majority vs. entropy-weighted voting)
+- `img/` - project figures (taken from the HALO, SmallSat and stochastic-network posters)
 - `photo.jpg`, `resume.pdf`, `halo.pdf`, `stochastic-network-resilience.pdf` - linked assets
   (`resume.pdf` has the phone number and clearance removed; the original is in Downloads)
 - `tools/build_single.py` - merges all pages into `single-file/index.html`, one
